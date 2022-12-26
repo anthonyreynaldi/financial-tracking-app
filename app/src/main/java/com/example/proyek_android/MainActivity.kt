@@ -10,7 +10,6 @@ class MainActivity : AppCompatActivity() {
 
         println("Test repo")
         println("Test repo2")
-
-        println("Test run git push dari Wendy")
+        println("Test repo3")
     }
 }
