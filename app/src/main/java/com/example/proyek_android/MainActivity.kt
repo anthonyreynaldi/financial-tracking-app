@@ -10,5 +10,7 @@ class MainActivity : AppCompatActivity() {
 
         println("Test repo")
         println("Test repo2")
+
+        println("Test Wendy")
     }
 }
