@@ -8,8 +8,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        println("Test")
         println("Test repo")
         println("Test repo2")
-        println("Test repo3")
     }
 }
