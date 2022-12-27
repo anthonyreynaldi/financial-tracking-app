@@ -6,6 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".register">
 
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="117dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/edittextborder"
+        android:backgroundTint="#4E51BF"
+        android:text="Register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_confpass" />
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/alata"
+        android:text="Already have an account? Log In"
+        android:textColor="#4E51BF"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_register" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -41,7 +67,7 @@
         android:textColor="#4E51BF"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/et_email3" />
+        app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
     <TextView
         android:id="@+id/textView9"
@@ -65,13 +91,13 @@
         android:textColor="#4E51BF"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/et_password2" />
+        app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
     <EditText
         android:id="@+id/et_name"
         android:layout_width="302dp"
         android:layout_height="40dp"
-        android:background="@drawable/editTextBorder"
+        android:background="@drawable/edittextborder"
         android:ems="10"
         android:fontFamily="@font/alata"
         android:hint="Enter your name"
@@ -84,10 +110,10 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
-        android:id="@+id/et_email3"
+        android:id="@+id/et_email"
         android:layout_width="302dp"
         android:layout_height="40dp"
-        android:background="@drawable/editTextBorder"
+        android:background="@drawable/edittextborder"
         android:ems="10"
         android:fontFamily="@font/alata"
         android:hint="Enter your e-mail"
@@ -101,25 +127,25 @@
         android:id="@+id/et_phone"
         android:layout_width="302dp"
         android:layout_height="40dp"
-        android:background="@drawable/editTextBorder"
+        android:background="@drawable/edittextborder"
         android:ems="10"
         android:fontFamily="@font/alata"
         android:hint="Enter your phone number"
-        android:inputType="textEmailAddress"
+        android:inputType="phone"
         android:minHeight="48dp"
         android:paddingLeft="15dp"
         app:layout_constraintStart_toStartOf="@+id/et_name"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <EditText
-        android:id="@+id/et_password2"
+        android:id="@+id/et_password"
         android:layout_width="302dp"
         android:layout_height="40dp"
-        android:background="@drawable/editTextBorder"
+        android:background="@drawable/edittextborder"
         android:ems="10"
         android:fontFamily="@font/alata"
         android:hint="Enter your password"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         android:minHeight="48dp"
         android:paddingLeft="15dp"
         app:layout_constraintStart_toStartOf="@+id/et_name"
@@ -129,11 +155,11 @@
         android:id="@+id/et_confpass"
         android:layout_width="302dp"
         android:layout_height="40dp"
-        android:background="@drawable/editTextBorder"
+        android:background="@drawable/edittextborder"
         android:ems="10"
         android:fontFamily="@font/alata"
         android:hint="Enter your password"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         android:minHeight="48dp"
         android:paddingLeft="15dp"
         app:layout_constraintStart_toStartOf="@+id/et_name"

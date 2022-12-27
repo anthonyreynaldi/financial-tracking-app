@@ -17,8 +17,8 @@ class MainActivity : AppCompatActivity() {
         println("Test repo3")
 
 
-        val et_email = findViewById<EditText>(R.id.et_email)
-        val et_password = findViewById<EditText>(R.id.et_password)
+        val et_email = findViewById<EditText>(R.id.et_lgemail)
+        val et_password = findViewById<EditText>(R.id.et_lgpassword)
         val tv_register = findViewById<TextView>(R.id.tv_register)
 
         tv_register.setOnClickListener{

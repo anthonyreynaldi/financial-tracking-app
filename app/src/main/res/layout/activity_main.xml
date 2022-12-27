@@ -28,7 +28,7 @@
         app:srcCompat="@drawable/bubble" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -48,8 +48,8 @@
         android:text="Please sign in"
         android:textColor="#454545"
         android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/tv_user"
+        app:layout_constraintTop_toBottomOf="@+id/tv_user" />
 
     <TextView
         android:id="@+id/textView6"
@@ -61,7 +61,7 @@
         android:text="E-mail"
         android:textColor="#4E51BF"
         android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="@+id/et_email"
+        app:layout_constraintStart_toStartOf="@+id/et_lgemail"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <TextView
@@ -88,7 +88,7 @@
         android:textColor="#4E51BF"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/et_email" />
+        app:layout_constraintTop_toBottomOf="@+id/et_lgemail" />
 
     <TextView
         android:id="@+id/textView4"
@@ -98,7 +98,7 @@
         android:text="to continue"
         android:textColor="#454545"
         android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/tv_user"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <ImageView
@@ -113,11 +113,11 @@
         app:srcCompat="@drawable/profile" />
 
     <EditText
-        android:id="@+id/et_email"
+        android:id="@+id/et_lgemail"
         android:layout_width="302dp"
         android:layout_height="40dp"
         android:layout_marginTop="4dp"
-        android:background="@drawable/editTextBorder"
+        android:background="@drawable/edittextborder"
         android:ems="10"
         android:fontFamily="@font/alata"
         android:hint="Enter your e-mail"
@@ -130,17 +130,17 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/et_password"
+        android:id="@+id/et_lgpassword"
         android:layout_width="302dp"
         android:layout_height="40dp"
-        android:background="@drawable/editTextBorder"
+        android:background="@drawable/edittextborder"
         android:ems="10"
         android:fontFamily="@font/alata"
         android:hint="Enter your password"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:paddingLeft="15dp"
-        app:layout_constraintStart_toStartOf="@+id/et_email"
+        app:layout_constraintStart_toStartOf="@+id/et_lgemail"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <Button
@@ -148,11 +148,11 @@
         android:layout_width="117dp"
         android:layout_height="40dp"
         android:layout_marginTop="32dp"
-        android:background="@drawable/editTextBorder"
+        android:background="@drawable/edittextborder"
         android:backgroundTint="#4E51BF"
         android:text="Log In"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_password" />
+        app:layout_constraintTop_toBottomOf="@+id/et_lgpassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
