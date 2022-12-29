@@ -18,12 +18,28 @@ class MainActivity : AppCompatActivity() {
 
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
+
         val et_email = findViewById<EditText>(R.id.et_lgemail)
         val et_password = findViewById<EditText>(R.id.et_lgpassword)
         val tv_register = findViewById<TextView>(R.id.tv_register)
         val btn_login = findViewById<Button>(R.id.btn_login)
         var dataUser: ArrayList<user> = ArrayList<user>()
         val contextView = findViewById<View>(R.id.view2)
+
+        //READ DATA
+        db.collection("user").get()
+            .addOnSuccessListener { result ->
+                dataUser.clear()
+                for(document in result){
+                    val namaBaru = user(document.data.get("name").toString(),
+                        document.data.get("email").toString(),
+                        document.data.get("phone").toString(),
+                        document.data.get("pass").toString())
+                    dataUser.add(namaBaru)
+                }
+            }.addOnFailureListener{
+                Log.d("Firebase", it.message.toString())
+            }
 
         tv_register.setOnClickListener{
             startActivity(Intent(this, register::class.java))
@@ -36,21 +52,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         btn_login.setOnClickListener{
-            //READ DATA
-            db.collection("user").get()
-                .addOnSuccessListener { result ->
-                    dataUser.clear()
-                    for(document in result){
-                        val namaBaru = user(document.data.get("name").toString(),
-                            document.data.get("email").toString(),
-                            document.data.get("phone").toString(),
-                            document.data.get("pass").toString())
-                        dataUser.add(namaBaru)
-                    }
-                }.addOnFailureListener{
-                    Log.d("Firebase", it.message.toString())
-                }
-
             var bool = false
             for(i in dataUser){
                 Log.d("hehe", "msk loop")
@@ -63,8 +64,8 @@ class MainActivity : AppCompatActivity() {
                         editor.apply()
                         startActivity(Intent(this, homepage::class.java))
                         bool = true
-                        break
                     }
+                    break
                 }
             }
             if(!bool){
