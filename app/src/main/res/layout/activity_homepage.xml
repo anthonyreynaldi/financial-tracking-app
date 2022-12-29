@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homepage_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".homepage">
@@ -24,7 +25,7 @@
         android:layout_height="177dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/btn_profile"
         app:srcCompat="@drawable/bubble" />
 
     <TextView
@@ -52,13 +53,12 @@
         app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/btn_profile"
         android:layout_width="60dp"
         android:layout_height="63dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/profile" />
 
@@ -126,5 +126,13 @@
         app:layout_constraintEnd_toEndOf="@+id/btn_history"
         app:layout_constraintTop_toBottomOf="@+id/btn_history"
         app:srcCompat="@drawable/btn_tambahsumberdana" />
+
+    <ImageView
+        android:id="@+id/btn_logout"
+        android:layout_width="100dp"
+        android:layout_height="32dp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_profile"
+        app:layout_constraintTop_toBottomOf="@+id/btn_profile"
+        app:srcCompat="@drawable/btn_logout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
