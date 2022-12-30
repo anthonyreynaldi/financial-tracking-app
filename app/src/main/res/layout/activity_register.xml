@@ -42,7 +42,7 @@
         android:text="Name"
         android:textColor="#4E51BF"
         android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="@+id/et_name"
+        app:layout_constraintStart_toStartOf="@+id/nama_sumber_dana"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
@@ -55,7 +55,7 @@
         android:textColor="#4E51BF"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/et_name" />
+        app:layout_constraintTop_toBottomOf="@+id/nama_sumber_dana" />
 
     <TextView
         android:id="@+id/textView8"
@@ -94,7 +94,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
     <EditText
-        android:id="@+id/et_name"
+        android:id="@+id/nama_sumber_dana"
         android:layout_width="302dp"
         android:layout_height="40dp"
         android:background="@drawable/edittextborder"
@@ -120,7 +120,7 @@
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:paddingLeft="15dp"
-        app:layout_constraintStart_toStartOf="@+id/et_name"
+        app:layout_constraintStart_toStartOf="@+id/nama_sumber_dana"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
@@ -134,7 +134,7 @@
         android:inputType="phone"
         android:minHeight="48dp"
         android:paddingLeft="15dp"
-        app:layout_constraintStart_toStartOf="@+id/et_name"
+        app:layout_constraintStart_toStartOf="@+id/nama_sumber_dana"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <EditText
@@ -148,7 +148,7 @@
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:paddingLeft="15dp"
-        app:layout_constraintStart_toStartOf="@+id/et_name"
+        app:layout_constraintStart_toStartOf="@+id/nama_sumber_dana"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <EditText
@@ -162,7 +162,7 @@
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:paddingLeft="15dp"
-        app:layout_constraintStart_toStartOf="@+id/et_name"
+        app:layout_constraintStart_toStartOf="@+id/nama_sumber_dana"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <ImageView
