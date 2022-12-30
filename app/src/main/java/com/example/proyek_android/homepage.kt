@@ -53,6 +53,10 @@ class homepage : AppCompatActivity() {
             editor.apply()
             startActivity(Intent(this, MainActivity::class.java))
         }
+
+        btn_report.setOnClickListener{
+            startActivity(Intent(this, graph_coba::class.java))
+        }
     }
     override fun onBackPressed() {
         Log.d("hehe", "hehe")
