@@ -25,7 +25,7 @@ class register : AppCompatActivity() {
 
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
-        et_name = findViewById<EditText>(R.id.et_name)
+        et_name = findViewById<EditText>(R.id.nama_sumber_dana)
         et_email = findViewById<EditText>(R.id.et_email)
         et_phone = findViewById<EditText>(R.id.et_phone)
         et_pass = findViewById<EditText>(R.id.et_password)

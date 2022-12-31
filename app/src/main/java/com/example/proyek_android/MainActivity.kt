@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
 
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
-
         val et_email = findViewById<EditText>(R.id.et_lgemail)
         val et_password = findViewById<EditText>(R.id.et_lgpassword)
         val tv_register = findViewById<TextView>(R.id.tv_register)
@@ -44,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         tv_register.setOnClickListener{
             startActivity(Intent(this, register::class.java))
         }
+
 
         var sp = getSharedPreferences("user_login", MODE_PRIVATE)
         val isisp = sp.getString("username", null)

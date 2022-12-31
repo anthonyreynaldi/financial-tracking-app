@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.proyek_android">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,6 +18,15 @@
         tools:targetApi="31">
         <activity
             android:name=".graph_coba"
+            android:exported="false" />
+        <activity
+            android:name=".pilihGambar"
+            android:exported="false" />
+        <activity
+            android:name=".sumberDanaList"
+            android:exported="false" />
+        <activity
+            android:name=".sumberDana"
             android:exported="false" />
         <activity
             android:name=".homepage"
