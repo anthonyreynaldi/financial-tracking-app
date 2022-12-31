@@ -38,6 +38,7 @@ class register : AppCompatActivity() {
         val isisp = sp.getString("username", null)
         if(isisp != null){
             startActivity(Intent(this, homepage::class.java))
+            finishAffinity()
         }
 
         btn_register.setOnClickListener{
@@ -67,12 +68,14 @@ class register : AppCompatActivity() {
                         }
                     }
                     if(!bool){
-                        TambahData(db, et_name.text.toString(), et_email.text.toString(), et_phone.text.toString(), et_pass.text.toString())
+                        TambahData(db, et_name.text.toString(), et_email.text.toString().lowercase(), et_phone.text.toString(), et_pass.text.toString())
                         sp = getSharedPreferences("user_login", MODE_PRIVATE)
                         val editor = sp.edit()
                         editor.putString("username", et_name.text.toString())
+                        editor.putString("email", et_email.text.toString())
                         editor.apply()
                         startActivity(Intent(this, homepage::class.java))
+                        finishAffinity()
                     }else{
                         //email is taken
                         Toast.makeText(contextView.context,"Email sudah terdaftar",Toast.LENGTH_LONG).show()
