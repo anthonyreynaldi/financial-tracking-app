@@ -20,14 +20,6 @@ class homepage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_homepage)
 
-        val db = FirebaseFirestore.getInstance()
-
-        db.collection(homepage.collectionName).document(homepage.documentName).get().addOnCompleteListener {
-            if (it.isSuccessful){
-                user = it.result.toObject(user::class.java)!!
-            }
-        }
-
         var btn_pemasukkan = findViewById<ImageView>(R.id.btn_inppemasukkan)
         var btn_pengeluaran = findViewById<ImageView>(R.id.btn_inppengeluaran)
         var btn_menabung = findViewById<ImageView>(R.id.btn_settargetmenabung)
@@ -42,10 +34,24 @@ class homepage : AppCompatActivity() {
 
         var sp = getSharedPreferences("user_login", MODE_PRIVATE)
         val isisp = sp.getString("username", null)
-        if(isisp == null){
+        val isisp_email = sp.getString("email", null)
+        if(isisp == null && isisp_email == null){
             startActivity(Intent(this, MainActivity::class.java))
+            finishAffinity()
         }else{
+            if (isisp_email != null) {
+//                documentName = isisp_email
+            }
             tv_user.setText(isisp)
+
+            //kalo sp nya ada baru di load dari fb
+            val db = FirebaseFirestore.getInstance()
+
+            db.collection(homepage.collectionName).document(homepage.documentName).get().addOnCompleteListener {
+                if (it.isSuccessful){
+                    user = it.result.toObject(user::class.java)!!
+                }
+            }
         }
 
         btn_logout.setVisibility(View.GONE)
@@ -65,8 +71,10 @@ class homepage : AppCompatActivity() {
             sp = getSharedPreferences("user_login", MODE_PRIVATE)
             val editor = sp.edit()
             editor.putString("username", null)
+            editor.putString("email", null)
             editor.apply()
             startActivity(Intent(this, MainActivity::class.java))
+            finishAffinity()
         }
 
         btn_report.setOnClickListener{
@@ -77,7 +85,7 @@ class homepage : AppCompatActivity() {
             startActivity(Intent(this, sumberDanaList::class.java))
         }
     }
-    override fun onBackPressed() {
-        Log.d("hehe", "hehe")
-    }
+//    override fun onBackPressed() {
+//        Log.d("hehe", "hehe")
+//    }
 }

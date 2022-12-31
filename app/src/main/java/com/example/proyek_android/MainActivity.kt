@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         val isisp = sp.getString("username", null)
         if(isisp != null){
             startActivity(Intent(this, homepage::class.java))
+            finishAffinity()
         }
 
         btn_login.setOnClickListener{
@@ -61,9 +62,11 @@ class MainActivity : AppCompatActivity() {
                     if(et_password.text.toString() == i.Pass){
                         val editor = sp.edit()
                         editor.putString("username", i.Name)
+                        editor.putString("email", i.Email)
                         editor.apply()
                         startActivity(Intent(this, homepage::class.java))
                         bool = true
+                        finishAffinity()
                     }
                     break
                 }
@@ -73,7 +76,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    override fun onBackPressed() {
-        Log.d("hehe", "hehe")
-    }
+//    override fun onBackPressed() {
+//        Log.d("hehe", "hehe")
+//    }
 }
