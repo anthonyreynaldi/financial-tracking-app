@@ -48,7 +48,7 @@ class user(
          return false
      }
 
-     fun addSumberDana(nama : String, nominal : Int): Pair<Boolean, String> {
+     fun addSumberDana(nama : String, nominal : Int, iconPath: String?): Pair<Boolean, String> {
 
          //check ada yang kembar gak namae
          if (isExistSumberDana(nama)){
@@ -56,7 +56,7 @@ class user(
          }
 
          //add new object
-         this.SumberDana.add(SumberDana(nama, nominal))
+         this.SumberDana.add(SumberDana(nama, nominal, iconPath))
 
          //update on fb
          this.save()
@@ -68,7 +68,7 @@ class user(
 //         }
      }
 
-    fun editSumberDana(index : Int, nama : String, nominal : Int): Pair<Boolean, String>{
+    fun editSumberDana(index : Int, nama : String, nominal : Int, iconPath : String?): Pair<Boolean, String>{
         val sumberDana = this.SumberDana[index]
 
         //check ada yang kembar gak namae
@@ -82,6 +82,7 @@ class user(
         //update nama nominal
         sumberDana.nama = nama
         sumberDana.jumlah = nominal
+        sumberDana.icon = iconPath
 
         //update nama di semua transaksi
 
