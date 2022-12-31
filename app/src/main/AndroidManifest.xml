@@ -17,6 +17,9 @@
         android:theme="@style/Theme.ProyekAndroid"
         tools:targetApi="31">
         <activity
+            android:name=".target"
+            android:exported="false" />
+        <activity
             android:name=".graph_coba"
             android:exported="false" />
         <activity

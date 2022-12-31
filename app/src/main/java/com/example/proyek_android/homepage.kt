@@ -84,6 +84,10 @@ class homepage : AppCompatActivity() {
         btn_sumber.setOnClickListener {
             startActivity(Intent(this, sumberDanaList::class.java))
         }
+
+        btn_menabung.setOnClickListener {
+            startActivity(Intent(this, target::class.java))
+        }
     }
 //    override fun onBackPressed() {
 //        Log.d("hehe", "hehe")

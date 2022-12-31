@@ -18,7 +18,9 @@ class user(
     var Email: String = "",
     var Phone: String = "",
     var Pass: String = "",
-    var SumberDana : ArrayList<SumberDana> = ArrayList()
+    var SumberDana : ArrayList<SumberDana> = ArrayList(),
+    var targetPengeluaran : Int = 0,
+    var targetTabungan : Int = 0
 ) {
      fun save(): Boolean {
          var success = false
@@ -102,5 +104,18 @@ class user(
             sum += sumberDana.jumlah
         }
         return sum
+    }
+
+
+    @JvmName("setTargetPengeluaran1")
+    fun setTargetPengeluaran(jumlah : Int){
+        this.targetPengeluaran = jumlah
+        this.save()
+    }
+
+    @JvmName("setTargetTabungan1")
+    fun setTargetTabungan(jumlah: Int){
+        this.targetTabungan = jumlah
+        this.save()
     }
 }
