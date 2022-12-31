@@ -40,7 +40,7 @@ class homepage : AppCompatActivity() {
             finishAffinity()
         }else{
             if (isisp_email != null) {
-//                documentName = isisp_email
+                documentName = isisp_email
             }
             tv_user.setText(isisp)
 
