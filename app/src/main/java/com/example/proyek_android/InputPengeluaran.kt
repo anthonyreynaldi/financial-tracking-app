@@ -24,11 +24,11 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
-    companion object{
-        var collectionName = "user"
-        var documentName = "wendy@gmail.com"
-        var user = user()
-    }
+//    companion object{
+//        var collectionName = "user"
+//        var documentName = "wendy@gmail.com"
+//        var user = user()
+//    }
 
     private val months = arrayOf("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
 
@@ -61,7 +61,11 @@ class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         supportActionBar?.hide() // hide toolbar
 
         val db : FirebaseFirestore = FirebaseFirestore.getInstance()
-        getDataUser(db, documentName)
+        // getDataUser(db, documentName)
+
+        // get list sumber dana dan kategori
+        siapkanListSumberDana()
+        siapkanListKategori()
 
         // input nama
         _etNama = findViewById(R.id.etNama)
@@ -92,10 +96,10 @@ class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener
                 val pengeluaran = Pengeluaran(_etNama.text.toString(), Integer.parseInt(_etNominal.text.toString()),
                     selectedKategori, selectedSumberDana, _etTanggal.text.toString(), _etDeskrispi.text.toString())
 
-                val saldo : Int = user.SumberDana.get(selectedIndexSumberDana).jumlah
+                val saldo : Int = homepage.user.SumberDana.get(selectedIndexSumberDana).jumlah
                 val nominal : Int = Integer.parseInt(_etNominal.text.toString())
 
-                val (needWarning, msg) = cekPengeluaran(saldo, nominal, getTotalPengeluaran(), user.targetPengeluaran)
+                val (needWarning, msg) = cekPengeluaran(saldo, nominal, getTotalPengeluaran(), homepage.user.targetPengeluaran)
                 if (needWarning) {
                     openWarningDialog(db, pengeluaran, msg)
                 } else {
@@ -143,7 +147,7 @@ class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener
 
     // function untuk get list sumber dana yang dimiliki user
     fun siapkanListSumberDana() {
-        for (sumberDana in user.SumberDana) {
+        for (sumberDana in homepage.user.SumberDana) {
             itemSumberDana.add(sumberDana.nama)
         }
 
@@ -159,7 +163,7 @@ class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener
 
     // function untuk get list kategori yang dimiliki user
     fun siapkanListKategori() {
-        for (kategori in user.kategoriPengeluaran) {
+        for (kategori in homepage.user.kategoriPengeluaran) {
             itemKategori.add(kategori.nama)
         }
 
@@ -175,32 +179,32 @@ class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener
     // function untuk tambah data pengeluaran baru ke database
     fun addDataPengeluaran(db: FirebaseFirestore, pengeluaran: Pengeluaran) {
         // add object Pengeluaran
-        user.listPengeluaran.add(pengeluaran)
+        homepage.user.listPengeluaran.add(pengeluaran)
 
         // update saldo sumber dana
-        user.SumberDana.get(selectedIndexSumberDana).jumlah -= pengeluaran.nominal
+        homepage.user.SumberDana.get(selectedIndexSumberDana).jumlah -= pengeluaran.nominal
 
         // create map
         val map = mutableMapOf<String, Any>()
-        map["pengeluaran"] = user.listPengeluaran
-        map["sumberDana"] = user.SumberDana
+        map["pengeluaran"] = homepage.user.listPengeluaran
+        map["sumberDana"] = homepage.user.SumberDana
 
         // add map to database
-        db.collection(collectionName).document(documentName)
+        db.collection(homepage.collectionName).document(homepage.documentName)
             .set(map, SetOptions.merge())
             .addOnSuccessListener {
-                Log.d("Firebase", "Simpan Data Berhasil!")
+                Log.d("TAG FIREBASE", "Simpan Data Berhasil!")
                 openSuccessDialog()
             }
             .addOnFailureListener {
-                Log.d("Firebase", it.message.toString())
+                Log.d("TAG FIREBASE", it.message.toString())
             }
     }
 
     // function untuk menghitung total pengeluaran user
     fun getTotalPengeluaran() : Int {
         var total = 0
-        for (pengeluaran in user.listPengeluaran) {
+        for (pengeluaran in homepage.user.listPengeluaran) {
             total += pengeluaran.nominal
         }
 
@@ -208,35 +212,35 @@ class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener
     }
 
     // function untuk get data user dari database
-    fun getDataUser(db: FirebaseFirestore, email: String){
-        db.collection(collectionName).document(email)
-            .get()
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    val document = it.result
-                    if (document != null) {
-                        user = document.toObject(user::class.java)!!
-
-                        // get list sumber dana dan kategori
-                        // dikasih delay supaya data user terambil dulu sebelum ditampilkan di view
-                        runBlocking {
-                            launch {
-                                delay(1000L)
-                                siapkanListSumberDana()
-                                siapkanListKategori()
-                            }
-                        }
-                    } else {
-                        Log.d("Firebase", "No such document")
-                    }
-                } else {
-                    Log.d("Firebase", "get failed with ", it.exception)
-                }
-            }
-            .addOnFailureListener {
-                Log.d("Firebase", it.message.toString())
-            }
-    }
+//    fun getDataUser(db: FirebaseFirestore, email: String){
+//        db.collection(homepage.collectionName).document(email)
+//            .get()
+//            .addOnCompleteListener {
+//                if (it.isSuccessful) {
+//                    val document = it.result
+//                    if (document != null) {
+//                        homepage.user = document.toObject(user::class.java)!!
+//
+//                        // get list sumber dana dan kategori
+//                        // dikasih delay supaya data user terambil dulu sebelum ditampilkan di view
+//                        runBlocking {
+//                            launch {
+//                                delay(1000L)
+//                                siapkanListSumberDana()
+//                                siapkanListKategori()
+//                            }
+//                        }
+//                    } else {
+//                        Log.d("Firebase", "No such document")
+//                    }
+//                } else {
+//                    Log.d("Firebase", "get failed with ", it.exception)
+//                }
+//            }
+//            .addOnFailureListener {
+//                Log.d("Firebase", it.message.toString())
+//            }
+//    }
 
     // function untuk clear input
     fun clearInput() {

@@ -12,7 +12,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.*
 import kotlinx.parcelize.Parcelize
 
-
 class user(
     var Name: String = "",
     var Email: String = "",
@@ -29,16 +28,16 @@ class user(
      fun save(): Boolean {
          var success = false
          val db = FirebaseFirestore.getInstance()
-             db.collection(homepage.collectionName).document(homepage.documentName).set(this)
-                 .addOnSuccessListener { documentReference ->
-                    CoroutineScope(Dispatchers.Main).async{
-                        success = true
-                    }
-                     Log.d(
-                         "TAG FIREBASE", "DocumentSnapshot added with ID: $documentReference"
-                     )
-                 }
-                 .addOnFailureListener { e -> Log.w("TAG FIREBASE", "Error adding document", e) }
+         db.collection(homepage.collectionName).document(homepage.documentName).set(this)
+             .addOnSuccessListener { documentReference ->
+                CoroutineScope(Dispatchers.Main).async{
+                    success = true
+                }
+                 Log.d(
+                     "TAG FIREBASE", "DocumentSnapshot added with ID: $documentReference"
+                 )
+             }
+             .addOnFailureListener { e -> Log.w("TAG FIREBASE", "Error adding document", e) }
 
          return success
      }
