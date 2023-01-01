@@ -13,6 +13,7 @@ import android.util.Log
 import android.widget.*
 import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.proyek_android.Classes.MoneyTextWatcher
 import com.example.proyek_android.Classes.Pengeluaran
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
@@ -72,6 +73,7 @@ class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener
 
         // input nominal
         _etNominal = findViewById(R.id.etNominal)
+        _etNominal.addTextChangedListener(MoneyTextWatcher(_etNominal))
 
         // input tanggal
         _etTanggal = findViewById(R.id.etTanggal)
@@ -92,14 +94,15 @@ class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener
                 selectedSumberDana == "" || _etTanggal.text.toString() == "") {
                 Toast.makeText(this, "Data belum lengkap", Toast.LENGTH_SHORT).show()
             } else {
+                val nominal = _etNominal.text.toString()
+                val nominalInt = nominal.replace(".", "").toInt()
+
                 // add data ke database
-                val pengeluaran = Pengeluaran(_etNama.text.toString(), Integer.parseInt(_etNominal.text.toString()),
+                val pengeluaran = Pengeluaran(_etNama.text.toString(), nominalInt,
                     selectedKategori, selectedSumberDana, _etTanggal.text.toString(), _etDeskrispi.text.toString())
 
                 val saldo : Int = homepage.user.SumberDana.get(selectedIndexSumberDana).jumlah
-                val nominal : Int = Integer.parseInt(_etNominal.text.toString())
-
-                val (needWarning, msg) = cekPengeluaran(saldo, nominal, getTotalPengeluaran(), homepage.user.targetPengeluaran)
+                val (needWarning, msg) = cekPengeluaran(saldo, nominalInt, getTotalPengeluaran(), homepage.user.targetPengeluaran)
                 if (needWarning) {
                     openWarningDialog(db, pengeluaran, msg)
                 } else {
