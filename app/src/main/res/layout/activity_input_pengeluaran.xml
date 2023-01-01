@@ -20,34 +20,32 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/bgbluekecil2" />
+            app:srcCompat="@drawable/bgbluekecil3" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="15dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView2">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/btn_back" />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="10dp"
-                app:srcCompat="@drawable/icon_pengeluaran" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/alata"
-                android:text="Pengeluaran"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/alata"
+            android:text="Pengeluaran"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
         <TextView
             android:id="@+id/textView1"
@@ -67,18 +65,18 @@
         <EditText
             android:id="@+id/etNama"
             android:layout_width="0dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="5dp"
+            android:layout_height="40dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/edittextborder"
             android:ems="10"
-            android:textSize="16sp"
             android:fontFamily="@font/alata"
             android:hint="Inputkan nama"
             android:inputType="text"
             android:minHeight="48dp"
             android:paddingLeft="15dp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -102,18 +100,18 @@
         <EditText
             android:id="@+id/etNominal"
             android:layout_width="0dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="5dp"
+            android:layout_height="40dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/edittextborder"
             android:ems="10"
-            android:textSize="16sp"
             android:fontFamily="@font/alata"
             android:hint="Inputkan nominal pengeluaran"
             android:inputType="number"
             android:minHeight="48dp"
             android:paddingLeft="15dp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -136,33 +134,32 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/alata"
             android:hint="Pilih kategori"
             android:textColorHint="#9D9D9D"
+            app:endIconTint="#4E51BF"
             app:hintEnabled="false"
-            app:placeholderText="Pilih kategori"
-            app:placeholderTextColor="#9D9D9D"
-            app:placeholderTextAppearance="@font/alata"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3"
-            app:endIconTint="#4E51BF"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+            app:placeholderText="Pilih kategori"
+            app:placeholderTextAppearance="@font/alata"
+            app:placeholderTextColor="#9D9D9D">
 
             <AutoCompleteTextView
                 android:id="@+id/selectKategori"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none"
-                android:fontFamily="@font/alata"
                 android:background="@drawable/edittextborder"
-                />
+                android:fontFamily="@font/alata"
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -183,33 +180,32 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/alata"
             android:hint="Pilih sumber dana"
             android:textColorHint="#9D9D9D"
+            app:endIconTint="#4E51BF"
             app:hintEnabled="false"
-            app:placeholderText="Pilih sumber dana"
-            app:placeholderTextColor="#9D9D9D"
-            app:placeholderTextAppearance="@font/alata"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4"
-            app:endIconTint="#4E51BF"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+            app:placeholderText="Pilih sumber dana"
+            app:placeholderTextAppearance="@font/alata"
+            app:placeholderTextColor="#9D9D9D">
 
             <AutoCompleteTextView
                 android:id="@+id/selectSumberDana"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none"
-                android:fontFamily="@font/alata"
                 android:background="@drawable/edittextborder"
-                />
+                android:fontFamily="@font/alata"
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -230,20 +226,20 @@
 
         <EditText
             android:id="@+id/etTanggal"
-            android:focusable="false"
             android:layout_width="0dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="5dp"
+            android:layout_height="40dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/edittextborder"
             android:ems="10"
-            android:textSize="16sp"
+            android:focusable="false"
             android:fontFamily="@font/alata"
             android:hint="Inputkan tanggal pengeluaran"
             android:inputType="date"
             android:minHeight="48dp"
             android:paddingLeft="15dp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -268,20 +264,20 @@
             android:id="@+id/etDeskripsi"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/edittextborder"
             android:ems="10"
-            android:textSize="16sp"
             android:fontFamily="@font/alata"
             android:hint="Inputkan deskripsi pengeluaran"
             android:inputType="textMultiLine"
             android:lines="6"
             android:maxLines="10"
             android:minLines="6"
-            android:scrollbars="vertical"
             android:padding="15dp"
+            android:scrollbars="vertical"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -293,17 +289,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
-            android:paddingHorizontal="50dp"
-            android:paddingVertical="10dp"
             android:background="@drawable/edittextborder"
             android:backgroundTint="#4E51BF"
+            android:fontFamily="@font/alata"
+            android:paddingHorizontal="50dp"
+            android:paddingVertical="10dp"
             android:text="Input"
             android:textColor="@color/white"
-            android:fontFamily="@font/alata"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etDeskripsi"/>
+            app:layout_constraintTop_toBottomOf="@+id/etDeskripsi" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

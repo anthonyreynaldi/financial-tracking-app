@@ -110,6 +110,12 @@ class InputPemasukkan : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
                 }
             }
         }
+
+        //btn back
+        val btn_back = findViewById<ImageView>(R.id.btn_back2)
+        btn_back.setOnClickListener{
+            startActivity(Intent(this, homepage::class.java))
+        }
     }
 
     // function untuk get list sumber dana yang dimiliki user

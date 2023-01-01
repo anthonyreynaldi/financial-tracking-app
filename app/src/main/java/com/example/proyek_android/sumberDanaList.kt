@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,6 +43,12 @@ class sumberDanaList : AppCompatActivity() {
 
         btn_add_sumber_dana.setOnClickListener {
             startActivity(Intent(this, sumberDana::class.java))
+        }
+
+        //btn back
+        val btn_back = findViewById<ImageView>(R.id.btn_back4)
+        btn_back.setOnClickListener{
+            startActivity(Intent(this, homepage::class.java))
         }
     }
 

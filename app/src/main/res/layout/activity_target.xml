@@ -6,65 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".target">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:scaleType="fitStart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bgheader" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/alata"
-        android:text="Set Target"
-        android:textColor="@color/cream"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textViewPengeluaran"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="@font/alata"
         android:text="Pengeluaran / bulan"
         android:textColor="#4E51BF"
         android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="302dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/edittextborder"
-        android:orientation="horizontal"
+        android:layout_marginTop="9dp"
+        android:background="@drawable/bg_red"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewPengeluaran">
-
-        <TextView
-            android:id="@+id/textView98"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:fontFamily="@font/alata"
-            android:gravity="center"
-            android:paddingLeft="5dp"
-            android:text="Rp."
-            android:textColor="#4E51BF"
-            android:textSize="16dp"
-            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et_target_pengeluaran"
@@ -73,45 +38,50 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="10"
-            android:hint="Input nominal"
+            android:fontFamily="@font/alata"
             android:inputType="number"
-            android:text="" />
-    </LinearLayout>
+            android:text="500,000"
+            android:textAlignment="center"
+            android:textColor="#4E51BF"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
 
-    <TextView
-        android:id="@+id/textViewTabungan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/alata"
-        android:text="Tabungan"
-        android:textColor="#4E51BF"
-        android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="@+id/textViewPengeluaran"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        <ImageView
+            android:id="@+id/tv_m_pengeluaran"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/btn_min" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="302dp"
+        <ImageView
+            android:id="@+id/tv_p_pengeluaran"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/et_target_pengeluaran"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/btn_plus" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/edittextborder"
-        android:orientation="horizontal"
+        android:background="@drawable/bg_blue"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTabungan">
-
-        <TextView
-            android:id="@+id/textView97"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:fontFamily="@font/alata"
-            android:gravity="center"
-            android:paddingLeft="5dp"
-            android:text="Rp."
-            android:textColor="#4E51BF"
-            android:textSize="16dp"
-            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et_target_tabungan"
@@ -120,10 +90,40 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="10"
-            android:hint="Input nominal"
+            android:fontFamily="@font/alata"
             android:inputType="number"
-            android:text="" />
-    </LinearLayout>
+            android:text="4500000"
+            android:textAlignment="center"
+            android:textColor="#4E51BF"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageView
+            android:id="@+id/tv_m_tabungan"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/btn_min" />
+
+        <ImageView
+            android:id="@+id/tv_p_tabungan"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/btn_plus" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/btn_simpan_target"
@@ -134,7 +134,59 @@
         android:backgroundTint="#4E51BF"
         android:text="simpan"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bgbluekecil3" />
+
+    <ImageView
+        android:id="@+id/btn_back5"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/btn_back" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alata"
+        android:text="Set Target"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+    <TextView
+        android:id="@+id/textViewTabungan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/alata"
+        android:text="Tabungan"
+        android:textColor="#4E51BF"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

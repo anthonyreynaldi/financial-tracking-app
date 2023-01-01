@@ -1,11 +1,13 @@
 package com.example.proyek_android
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.util.Log
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.example.proyek_android.Classes.MoneyTextWatcher
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
 
 class target : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +47,71 @@ class target : AppCompatActivity() {
 
                 Toast.makeText(this, "Target berhasil disimpan", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        val min_pengeluaran = findViewById<ImageView>(R.id.tv_m_pengeluaran)
+        val plus_pengeluaran = findViewById<ImageView>(R.id.tv_p_pengeluaran)
+
+//        val decimalFormat = DecimalFormat("#,###,###")
+//        val prezzo: String = decimalFormat.format(number)
+        var pengeluaran = user.targetPengeluaran.toString().toInt()
+        min_pengeluaran.setOnClickListener{
+            if(pengeluaran > 0){
+                et_target_pengeluaran.setText((pengeluaran - 100000).toString())
+                pengeluaran = pengeluaran - 100000
+            }else if(pengeluaran > 2000000){
+                et_target_pengeluaran.setText((pengeluaran - 500000).toString())
+                pengeluaran = pengeluaran - 500000
+            }else if(pengeluaran > 10000000){
+                et_target_pengeluaran.setText((pengeluaran - 1000000).toString())
+                pengeluaran = pengeluaran - 1000000
+            }
+        }
+        plus_pengeluaran.setOnClickListener{
+            if(pengeluaran >= 0){
+                et_target_pengeluaran.setText((pengeluaran + 100000).toString())
+                pengeluaran = pengeluaran + 100000
+            }else if(pengeluaran > 2000000){
+                et_target_pengeluaran.setText((pengeluaran + 500000).toString())
+                pengeluaran = pengeluaran + 500000
+            }else if(pengeluaran > 10000000){
+                et_target_pengeluaran.setText((pengeluaran + 1000000).toString())
+                pengeluaran = pengeluaran + 1000000
+            }
+        }
+
+
+        val min_tabungan = findViewById<ImageView>(R.id.tv_m_tabungan)
+        val plus_tabungan = findViewById<ImageView>(R.id.tv_p_tabungan)
+        var tabungan = user.targetTabungan.toString().toInt()
+        min_tabungan.setOnClickListener{
+            if(tabungan > 0){
+                et_target_tabungan.setText((tabungan - 100000).toString())
+                tabungan = tabungan - 100000
+            }else if(tabungan > 2000000){
+                et_target_tabungan.setText((tabungan - 500000).toString())
+                tabungan = tabungan - 500000
+            }else if(tabungan > 10000000){
+                et_target_tabungan.setText((tabungan - 1000000).toString())
+                tabungan = tabungan - 1000000
+            }
+        }
+        plus_tabungan.setOnClickListener{
+            if(tabungan >= 0){
+                et_target_tabungan.setText((tabungan + 100000).toString())
+                tabungan = tabungan + 100000
+            }else if(tabungan > 2000000){
+                et_target_tabungan.setText((tabungan + 500000).toString())
+                tabungan = tabungan + 500000
+            }else if(tabungan > 10000000){
+                et_target_tabungan.setText((tabungan + 1000000).toString())
+                tabungan = tabungan + 1000000
+            }
+        }
+
+        val btn_back = findViewById<ImageView>(R.id.btn_back5)
+        btn_back.setOnClickListener{
+            startActivity(Intent(this, homepage::class.java))
         }
     }
 }

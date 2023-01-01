@@ -132,6 +132,12 @@ class sumberDana : AppCompatActivity() {
             val intent = Intent(this, pilihGambar::class.java)
             startActivityForResult(intent, 234)
         }
+
+        //btn back
+        val btn_back = findViewById<ImageView>(R.id.btn_back3)
+        btn_back.setOnClickListener{
+            startActivity(Intent(this, sumberDanaList::class.java))
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
