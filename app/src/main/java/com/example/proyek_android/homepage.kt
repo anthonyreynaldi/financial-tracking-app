@@ -101,6 +101,10 @@ class homepage : AppCompatActivity() {
         btn_menabung.setOnClickListener {
             startActivity(Intent(this, target::class.java))
         }
+
+        btn_kategori.setOnClickListener {
+            startActivity(Intent(this, kategori::class.java))
+        }
     }
 //    override fun onBackPressed() {
 //        Log.d("hehe", "hehe")

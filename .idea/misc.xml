@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+
         <entry key="..\:/SEM5 - ANDROID/Proyek-Android/Proyek-Android/app/src/main/res/drawable/editTextBorder.xml" value="0.14" />
         <entry key="..\:/SEM5 - ANDROID/Proyek-Android/Proyek-Android/app/src/main/res/drawable/edittextborder.xml" value="0.121" />
         <entry key="..\:/SEM5 - ANDROID/Proyek-Android/Proyek-Android/app/src/main/res/font/alata.xml" value="0.1" />
@@ -21,6 +22,25 @@
         <entry key="..\:/SEM5 - ANDROID/Proyek-Android/Proyek-Android/app/src/main/res/layout/item_gambar.xml" value="0.1838768115942029" />
         <entry key="..\:/SEM5 - ANDROID/Proyek-Android/Proyek-Android/app/src/main/res/layout/item_sumber_dana.xml" value="0.1838768115942029" />
         <entry key="..\:/SEM5 - ANDROID/Proyek-Android/Proyek-Android/app/src/main/res/layout/list_select_menu.xml" value="0.1838768115942029" />
+        
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/drawable/add.xml" value="0.121" />
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/drawable/editTextBorder.xml" value="0.121" />
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/drawable/trash.xml" value="0.175" />
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/font/alata.xml" value="0.28020833333333334" />
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/layout/activity_graph_coba.xml" value="0.2" />
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/layout/activity_homepage.xml" value="0.264" />
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/layout/activity_kategori.xml" value="0.25" />
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/layout/activity_pilih_gambar.xml" value="0.264" />
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/layout/activity_register.xml" value="0.264" />
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/layout/activity_sumber_dana.xml" value="0.25" />
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/layout/activity_sumber_dana_list.xml" value="0.25" />
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/layout/activity_target.xml" value="0.264" />
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/layout/custom_dialog_kategori.xml" value="0.264" />
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/layout/fragment_kategori_pendapatan.xml" value="0.25" />
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/layout/fragment_kategori_pengeluaran.xml" value="0.25" />
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/layout/item_gambar.xml" value="0.24895833333333334" />
+        <entry key="..\:/Petra/.Semester 5/Pemrograman Berbasis Android/ProyekAndroid/app/src/main/res/layout/item_sumber_dana.xml" value="0.4" />
       </map>
     </option>
   </component>
