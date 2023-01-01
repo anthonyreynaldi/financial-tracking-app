@@ -151,20 +151,24 @@ class InputPemasukkan : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         // update saldo sumber dana
         homepage.user.SumberDana.get(selectedIndexSumberDana).jumlah += pemasukkan.nominal
 
+        // update total sumber dana
+        homepage.user.totalSumberDana = homepage.user.getTotalSumberDana()
+
         // create map
         val map = mutableMapOf<String, Any>()
-        map["pemasukkan"] = homepage.user.listPemasukkan
+        map["listPemasukkan"] = homepage.user.listPemasukkan
         map["sumberDana"] = homepage.user.SumberDana
+        map["totalSumberDana"] = homepage.user.totalSumberDana
 
         // add map to database
         db.collection(homepage.collectionName).document(homepage.documentName)
             .set(map, SetOptions.merge())
             .addOnSuccessListener {
-                Log.d("Firebase", "Simpan Data Berhasil!")
+                Log.d("TAG FIREBASE", "Simpan Data Berhasil!")
                 openSuccessDialog()
             }
             .addOnFailureListener {
-                Log.d("Firebase", it.message.toString())
+                Log.d("TAG FIREBASE", it.message.toString())
             }
     }
 

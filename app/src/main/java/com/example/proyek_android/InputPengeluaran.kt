@@ -184,10 +184,14 @@ class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         // update saldo sumber dana
         homepage.user.SumberDana.get(selectedIndexSumberDana).jumlah -= pengeluaran.nominal
 
+        // update total sumber dana
+        homepage.user.totalSumberDana = homepage.user.getTotalSumberDana()
+
         // create map
         val map = mutableMapOf<String, Any>()
-        map["pengeluaran"] = homepage.user.listPengeluaran
+        map["listPengeluaran"] = homepage.user.listPengeluaran
         map["sumberDana"] = homepage.user.SumberDana
+        map["totalSumberDana"] = homepage.user.totalSumberDana
 
         // add map to database
         db.collection(homepage.collectionName).document(homepage.documentName)

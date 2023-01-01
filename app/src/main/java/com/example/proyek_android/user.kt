@@ -20,6 +20,7 @@ class user(
     var SumberDana : ArrayList<SumberDana> = ArrayList(),
     var targetPengeluaran : Int = 0,
     var targetTabungan : Int = 0,
+    var totalSumberDana : Int = 0,
     var listPengeluaran : ArrayList<Pengeluaran> = ArrayList(),
     var listPemasukkan : ArrayList<Pemasukkan> = ArrayList(),
     var kategoriPengeluaran : ArrayList<KategoriPengeluaran> = ArrayList(),
@@ -99,6 +100,7 @@ class user(
         this.save()
     }
 
+    @JvmName("getTotalSumberDana1")
     fun getTotalSumberDana(): Int {
         var sum = 0
         for (sumberDana in this.SumberDana){
@@ -106,7 +108,6 @@ class user(
         }
         return sum
     }
-
 
     @JvmName("setTargetPengeluaran1")
     fun setTargetPengeluaran(jumlah : Int){
