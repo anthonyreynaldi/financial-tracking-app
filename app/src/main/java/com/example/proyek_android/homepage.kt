@@ -19,6 +19,7 @@ class homepage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_homepage)
+        supportActionBar?.hide() // hide toolbar
 
         var btn_pemasukkan = findViewById<ImageView>(R.id.btn_inppemasukkan)
         var btn_pengeluaran = findViewById<ImageView>(R.id.btn_inppengeluaran)
@@ -75,6 +76,14 @@ class homepage : AppCompatActivity() {
             editor.apply()
             startActivity(Intent(this, MainActivity::class.java))
             finishAffinity()
+        }
+
+        btn_pengeluaran.setOnClickListener {
+            startActivity(Intent(this, InputPengeluaran::class.java))
+        }
+
+        btn_pemasukkan.setOnClickListener {
+            startActivity(Intent(this, InputPemasukkan::class.java))
         }
 
         btn_report.setOnClickListener{
