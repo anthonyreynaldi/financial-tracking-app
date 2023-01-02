@@ -10,5 +10,6 @@
     <color name="cream">#FBF6F0</color>
     <color name="red">#dc3545</color>
     <color name="yellow">#ffc107</color>
+    <color name="orange">#FFA500</color>
     <color name="success">#FF255E31</color>
 </resources>

@@ -1,6 +1,7 @@
 package com.example.proyek_android
 
 import android.app.Dialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -126,6 +127,13 @@ class kategori : AppCompatActivity() {
 
         fab_tambah_kategori.setOnClickListener {
             kategori_dialog.show()
+        }
+
+
+        //btn back
+        val btn_back = findViewById<ImageView>(R.id.btn_back6)
+        btn_back.setOnClickListener{
+            finish()
         }
 
     }

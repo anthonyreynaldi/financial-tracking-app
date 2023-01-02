@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.proyek_android.Classes.ItemHistory
@@ -32,6 +34,8 @@ class AdapterHistory (
     }
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var itemCard : CardView = itemView.findViewById(R.id.itemCard)
+
         var tv_kategoriItem : TextView = itemView.findViewById(R.id.tv_kategoriItem)
         var tv_sumberDanaItem : TextView = itemView.findViewById(R.id.tv_sumberDanaItem)
         var tv_namaItem : TextView = itemView.findViewById(R.id.tv_namaItem)
@@ -93,6 +97,10 @@ class AdapterHistory (
                 }
                 break
             }
+        }
+
+        holder.itemCard.setOnClickListener {
+            onItemClickCallback.onItemClicked(itemHistory)
         }
     }
 
