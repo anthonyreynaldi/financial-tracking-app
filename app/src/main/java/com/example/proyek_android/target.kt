@@ -42,8 +42,8 @@ class target : AppCompatActivity() {
                 val target_pengeluaran_int = target_pengeluaran.replace(".", "").toInt()
                 val target_tabungan_int = target_tabungan.replace(".", "").toInt()
 
-                user.setTargetPengeluaran(target_pengeluaran_int)
-                user.setTargetTabungan(target_tabungan_int)
+                user.set_TargetPengeluaran(target_pengeluaran_int)
+                user.set_TargetTabungan(target_tabungan_int)
 
                 Toast.makeText(this, "Target berhasil disimpan", Toast.LENGTH_SHORT).show()
             }

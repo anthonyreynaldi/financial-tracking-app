@@ -10,11 +10,13 @@ import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.proyek_android.Classes.MoneyTextWatcher
 import com.example.proyek_android.Classes.Pengeluaran
+import com.example.proyek_android.Classes.RupiahFormater
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import kotlinx.coroutines.delay
@@ -102,7 +104,7 @@ class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener
                     selectedKategori, selectedSumberDana, _etTanggal.text.toString(), _etDeskrispi.text.toString())
 
                 val saldo : Int = homepage.user.SumberDana.get(selectedIndexSumberDana).jumlah
-                val (needWarning, msg) = cekPengeluaran(saldo, nominalInt, getTotalPengeluaran(), homepage.user.targetPengeluaran)
+                val (needWarning, msg) = cekPengeluaran(saldo, nominalInt, getTotalPengeluaran() + nominalInt, homepage.user.targetPengeluaran)
                 if (needWarning) {
                     openWarningDialog(db, pengeluaran, msg)
                 } else {
@@ -157,8 +159,9 @@ class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener
 
     // function untuk get list sumber dana yang dimiliki user
     fun siapkanListSumberDana() {
+        val rupiahFormater = RupiahFormater()
         for (sumberDana in homepage.user.SumberDana) {
-            itemSumberDana.add(sumberDana.nama)
+            itemSumberDana.add(sumberDana.nama + " (${rupiahFormater.format(sumberDana.jumlah)})")
         }
 
         // select sumber dana
@@ -195,7 +198,7 @@ class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         homepage.user.SumberDana.get(selectedIndexSumberDana).jumlah -= pengeluaran.nominal
 
         // update total sumber dana
-        homepage.user.totalSumberDana = homepage.user.getTotalSumberDana()
+        homepage.user.totalSumberDana = homepage.user.ambilTotalSumberDana()
 
         // create map
         val map = mutableMapOf<String, Any>()
@@ -209,6 +212,7 @@ class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener
             .addOnSuccessListener {
                 Log.d("TAG FIREBASE", "Simpan Data Berhasil!")
                 openSuccessDialog()
+                homepage.user.save()
             }
             .addOnFailureListener {
                 Log.d("TAG FIREBASE", it.message.toString())
@@ -338,6 +342,9 @@ class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         }
 
         val btnContinue = dialogBinding.findViewById<Button>(R.id.btnContinue)
+        if (description.contains("pemasukkan", true)){
+            btnContinue.visibility = View.GONE
+        }
         btnContinue.setOnClickListener {
             dialog.dismiss()
             addDataPengeluaran(db, pengeluaran)

@@ -163,7 +163,7 @@ class InputPemasukkan : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         homepage.user.SumberDana.get(selectedIndexSumberDana).jumlah += pemasukkan.nominal
 
         // update total sumber dana
-        homepage.user.totalSumberDana = homepage.user.getTotalSumberDana()
+        homepage.user.totalSumberDana = homepage.user.ambilTotalSumberDana()
 
         // create map
         val map = mutableMapOf<String, Any>()
@@ -177,6 +177,7 @@ class InputPemasukkan : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
             .addOnSuccessListener {
                 Log.d("TAG FIREBASE", "Simpan Data Berhasil!")
                 openSuccessDialog()
+                homepage.user.save()
             }
             .addOnFailureListener {
                 Log.d("TAG FIREBASE", it.message.toString())

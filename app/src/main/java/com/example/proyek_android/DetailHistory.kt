@@ -10,6 +10,7 @@ import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -143,7 +144,7 @@ class DetailHistory : AppCompatActivity(), DatePickerDialog.OnDateSetListener, T
         val btn_back = findViewById<ImageView>(R.id.btn_back)
         btn_back.setOnClickListener{
             startActivity(Intent(this, History::class.java))
-            finishAffinity()
+            finish()
         }
     }
 
@@ -171,7 +172,7 @@ class DetailHistory : AppCompatActivity(), DatePickerDialog.OnDateSetListener, T
         }
 
         // update total sumber dana
-        homepage.user.totalSumberDana = homepage.user.getTotalSumberDana()
+        homepage.user.totalSumberDana = homepage.user.ambilTotalSumberDana()
 
         map["listPemasukkan"] = homepage.user.listPemasukkan
         map["sumberDana"] = homepage.user.SumberDana
@@ -183,6 +184,7 @@ class DetailHistory : AppCompatActivity(), DatePickerDialog.OnDateSetListener, T
             .addOnSuccessListener {
                 Log.d("TAG FIREBASE", "Data berhasil dihapus!")
                 openSuccessDialog("Data item berhasil diubah")
+                homepage.user.save()
             }
             .addOnFailureListener {
                 Log.d("TAG FIREBASE", it.message.toString())
@@ -213,7 +215,7 @@ class DetailHistory : AppCompatActivity(), DatePickerDialog.OnDateSetListener, T
         }
 
         // update total sumber dana
-        homepage.user.totalSumberDana = homepage.user.getTotalSumberDana()
+        homepage.user.totalSumberDana = homepage.user.ambilTotalSumberDana()
 
         map["listPengeluaran"] = homepage.user.listPengeluaran
         map["sumberDana"] = homepage.user.SumberDana
@@ -225,6 +227,7 @@ class DetailHistory : AppCompatActivity(), DatePickerDialog.OnDateSetListener, T
             .addOnSuccessListener {
                 Log.d("TAG FIREBASE", "Data berhasil dihapus!")
                 openSuccessDialog("Data item berhasil diubah")
+                homepage.user.save()
             }
             .addOnFailureListener {
                 Log.d("TAG FIREBASE", it.message.toString())
@@ -256,7 +259,7 @@ class DetailHistory : AppCompatActivity(), DatePickerDialog.OnDateSetListener, T
         }
 
         // update total sumber dana
-        homepage.user.totalSumberDana = homepage.user.getTotalSumberDana()
+        homepage.user.totalSumberDana = homepage.user.ambilTotalSumberDana()
 
         map["sumberDana"] = homepage.user.SumberDana
         map["totalSumberDana"] = homepage.user.totalSumberDana
@@ -267,6 +270,7 @@ class DetailHistory : AppCompatActivity(), DatePickerDialog.OnDateSetListener, T
             .addOnSuccessListener {
                 Log.d("TAG FIREBASE", "Data berhasil dihapus!")
                 openSuccessDialog("Data item berhasil dihapus")
+                homepage.user.save()
             }
             .addOnFailureListener {
                 Log.d("TAG FIREBASE", it.message.toString())
@@ -412,6 +416,9 @@ class DetailHistory : AppCompatActivity(), DatePickerDialog.OnDateSetListener, T
         }
 
         val btnContinue = dialogBinding.findViewById<Button>(R.id.btnContinue)
+        if (description.contains("pemasukkan", true)){
+            btnContinue.visibility = View.GONE
+        }
         btnContinue.setOnClickListener {
             dialog.dismiss()
             saveItemPengeluaran(db, pengeluaran, index)
@@ -420,8 +427,9 @@ class DetailHistory : AppCompatActivity(), DatePickerDialog.OnDateSetListener, T
 
     // function untuk get list sumber dana yang dimiliki user
     fun siapkanListSumberDana() {
+        val rupiahFormater = RupiahFormater()
         for (sumberDana in homepage.user.SumberDana) {
-            itemSumberDana.add(sumberDana.nama)
+            itemSumberDana.add(sumberDana.nama + " (${rupiahFormater.format(sumberDana.jumlah)})")
         }
 
         // select sumber dana

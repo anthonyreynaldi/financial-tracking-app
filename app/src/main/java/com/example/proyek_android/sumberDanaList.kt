@@ -63,6 +63,6 @@ class sumberDanaList : AppCompatActivity() {
         //set total
         val tv_total_sumber_dana = findViewById<TextView>(R.id.tv_total_sumber_dana)
         val rupiahFormater = RupiahFormater()
-        tv_total_sumber_dana.setText("Total: " + rupiahFormater.format(user.getTotalSumberDana()))
+        tv_total_sumber_dana.setText("Total: " + rupiahFormater.format(user.ambilTotalSumberDana()))
     }
 }

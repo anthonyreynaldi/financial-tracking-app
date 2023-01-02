@@ -41,6 +41,7 @@ class user(
         this.kategoriPemasukkan.add(KategoriPemasukkan("Lain-lain", "😱"))
     }
      fun save(): Boolean {
+         this.totalSumberDana = ambilTotalSumberDana()
          var success = false
          val db = FirebaseFirestore.getInstance()
          db.collection(homepage.collectionName).document(homepage.documentName).set(this)
@@ -48,6 +49,20 @@ class user(
                 CoroutineScope(Dispatchers.Main).async{
                     success = true
                 }
+                 Log.d(
+                     "TAG FIREBASE", "DocumentSnapshot added with ID: $documentReference"
+                 )
+             }
+             .addOnFailureListener { e -> Log.w("TAG FIREBASE", "Error adding document", e) }
+
+
+         db.collection("Total Tabungan").document(homepage.documentName).set(
+             mapOf("Total" to this.ambilTotalSumberDana())
+         )
+             .addOnSuccessListener { documentReference ->
+                 CoroutineScope(Dispatchers.Main).async{
+                     success = true
+                 }
                  Log.d(
                      "TAG FIREBASE", "DocumentSnapshot added with ID: $documentReference"
                  )
@@ -124,23 +139,20 @@ class user(
         this.save()
     }
 
-    @JvmName("getTotalSumberDana1")
-    fun getTotalSumberDana(): Int {
+    fun ambilTotalSumberDana(): Int {
         var sum = 0
         for (sumberDana in this.SumberDana){
             sum += sumberDana.jumlah
         }
         return sum
     }
-
-    @JvmName("setTargetPengeluaran1")
-    fun setTargetPengeluaran(jumlah : Int){
+    
+    fun set_TargetPengeluaran(jumlah : Int){
         this.targetPengeluaran = jumlah
         this.save()
     }
 
-    @JvmName("setTargetTabungan1")
-    fun setTargetTabungan(jumlah: Int){
+    fun set_TargetTabungan(jumlah: Int){
         this.targetTabungan = jumlah
         this.save()
     }
