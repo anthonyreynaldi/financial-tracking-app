@@ -48,7 +48,7 @@ class sumberDanaList : AppCompatActivity() {
         //btn back
         val btn_back = findViewById<ImageView>(R.id.btn_back4)
         btn_back.setOnClickListener{
-            startActivity(Intent(this, homepage::class.java))
+            finish()
         }
     }
 

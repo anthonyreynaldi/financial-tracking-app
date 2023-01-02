@@ -111,7 +111,7 @@ class target : AppCompatActivity() {
 
         val btn_back = findViewById<ImageView>(R.id.btn_back5)
         btn_back.setOnClickListener{
-            startActivity(Intent(this, homepage::class.java))
+            finish()
         }
     }
 }

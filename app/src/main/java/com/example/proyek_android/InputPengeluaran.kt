@@ -114,7 +114,7 @@ class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         //btn back
         val btn_back = findViewById<ImageView>(R.id.btn_back)
         btn_back.setOnClickListener{
-            startActivity(Intent(this, homepage::class.java))
+            finish()
         }
     }
 
@@ -173,7 +173,7 @@ class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener
     // function untuk get list kategori yang dimiliki user
     fun siapkanListKategori() {
         for (kategori in homepage.user.kategoriPengeluaran) {
-            itemKategori.add(kategori.nama)
+            itemKategori.add(kategori.icon + " " + kategori.nama)
         }
 
         // select kategori
