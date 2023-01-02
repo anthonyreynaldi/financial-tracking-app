@@ -3,10 +3,9 @@ package com.example.proyek_android
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyek_android.Classes.Pemasukkan
 import com.example.proyek_android.Classes.Pengeluaran
@@ -18,30 +17,84 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IAxisValueFormatter
+import com.google.android.material.textfield.TextInputLayout
+import java.lang.Integer.min
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class report : AppCompatActivity() {
+    lateinit var arPengeluaran: IntArray
+    lateinit var arPemasukkan: IntArray
     override fun onCreate(savedInstanceState: Bundle?) {
-        var arPengeluaran = IntArray(12)
-        var arPemasukkan = IntArray(12)
+        arPengeluaran = IntArray(12)
+        arPemasukkan = IntArray(12)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_report)
-        var sdf = SimpleDateFormat("M")
+
+        var sdf = SimpleDateFormat("yyyy")
+
+        var minYrPengeluaran = sdf.format(Date()).toString().toInt() - 1
+        var minYrPemasukkan = sdf.format(Date()).toString().toInt() - 1
+        println("minyrpeng0"+minYrPengeluaran)
+        for (item in homepage.user.listPengeluaran) {
+            var tanggal = item.tanggal.toString().split(' ')
+            println(tanggal[3].toInt())
+            if(tanggal[3].toInt() < minYrPengeluaran){
+                minYrPengeluaran = tanggal[3].toInt()
+                println("minyrpeng2"+minYrPengeluaran)
+            }
+        }
+        println("minyrpeng"+minYrPengeluaran)
+        for (item in homepage.user.listPemasukkan) {
+            var tanggal = item.tanggal.toString().split(' ')
+            if(tanggal[3].toInt() < minYrPemasukkan){
+                minYrPemasukkan = tanggal[3].toInt()
+            }
+        }
+
+        sdf = SimpleDateFormat("M")
         val curMonth = sdf.format(Date()).toString().toInt()
         sdf = SimpleDateFormat("yyyy")
-        val curYear = sdf.format(Date()).toString().toInt() - 1
+        var curYear = sdf.format(Date()).toString().toInt() - 1
 
+        var years = ArrayList<Int>()
+        println("minYrPeng"+minYrPengeluaran)
+        println("minyrPem"+minYrPemasukkan)
+        for (num in min(minYrPengeluaran, minYrPemasukkan)..curYear){
+            years.add(num)
+        }
         var tv_judul = findViewById<TextView>(R.id.tv_report_judul)
-        tv_judul.setText("REPORT TAHUN "+curYear)
 
+
+        //btn back
         val btn_back = findViewById<ImageView>(R.id.btn_back9)
         btn_back.setOnClickListener{
             startActivity(Intent(this, homepage::class.java))
         }
 
+        // select sumber dana
+        var sp_year = findViewById<AutoCompleteTextView>(R.id.selectYear)
+        val listAdapter3 = ArrayAdapter(this, R.layout.list_select_menu, years)
+        var selectedYear = curYear - 1
+        sp_year.setAdapter(listAdapter3)
+        sp_year.setOnItemClickListener{ adapterView, view, i, l ->
+            selectedYear = adapterView.getItemAtPosition(i).toString().toInt()
+            tv_judul.setText("REPORT TAHUN "+selectedYear)
+
+            graph(selectedYear)
+        }
+
+
+    }
+
+    fun graph(year: Int){
+        val curYear = year
+        arPengeluaran = IntArray(12)
+        arPemasukkan = IntArray(12)
+        println("coba "+Arrays.toString(arPengeluaran))
         for (item in homepage.user.listPengeluaran) {
             val data = Pengeluaran(
                 item.nama,
@@ -72,9 +125,6 @@ class report : AppCompatActivity() {
                 arPemasukkan[getMonth(tanggal[2]) - 1] = arPemasukkan[getMonth(tanggal[2]) - 1] + item.nominal
             }
         }
-        println("pem"+Arrays.toString(arPemasukkan))
-
-
         val pemasukkan2 = ArrayList<Entry>()
         pemasukkan2.add(Entry(0F, arPemasukkan[0].toFloat()/1000000))
         pemasukkan2.add(Entry(1F, arPemasukkan[1].toFloat()/1000000))
