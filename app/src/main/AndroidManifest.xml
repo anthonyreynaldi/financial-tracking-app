@@ -20,6 +20,13 @@
             android:name=".report"
             android:exported="false" />
         <activity
+            android:name=".DetailHistory"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".History"
             android:exported="false">
             <meta-data

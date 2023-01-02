@@ -111,13 +111,14 @@ class InputPengeluaran : AppCompatActivity(), DatePickerDialog.OnDateSetListener
             }
         }
 
-        //btn back
+        // btn back
         val btn_back = findViewById<ImageView>(R.id.btn_back)
         btn_back.setOnClickListener{
             startActivity(Intent(this, homepage::class.java))
         }
     }
 
+    // function untuk cek pengeluaran user
     fun cekPengeluaran(saldo: Int, nominal: Int, total: Int, target: Int): Pair<Boolean, String>{
         var needWarning = true
         var msg = ""

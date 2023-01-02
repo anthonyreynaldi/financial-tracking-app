@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -39,26 +40,54 @@ class History : AppCompatActivity() {
 
     private fun TambahData() {
         // Add data pengeluaran
-        for (item in homepage.user.listPengeluaran) {
+//        for (item in homepage.user.listPengeluaran) {
+//            val data = ItemHistory(
+//                item.nama,
+//                item.nominal,
+//                item.kategori,
+//                item.sumberDana,
+//                item.tanggal,
+//                "Pengeluaran"
+//            )
+//            arItemHistory.add(data)
+//        }
+
+        for (i in 0 until homepage.user.listPengeluaran.size) {
             val data = ItemHistory(
-                item.nama,
-                item.nominal,
-                item.kategori,
-                item.sumberDana,
-                item.tanggal,
+                i,
+                homepage.user.listPengeluaran[i].nama,
+                homepage.user.listPengeluaran[i].nominal,
+                homepage.user.listPengeluaran[i].kategori,
+                homepage.user.listPengeluaran[i].sumberDana,
+                homepage.user.listPengeluaran[i].tanggal,
+                homepage.user.listPengeluaran[i].deskripsi,
                 "Pengeluaran"
             )
             arItemHistory.add(data)
         }
 
         // Add data pemasukkan
-        for (item in homepage.user.listPemasukkan) {
+//        for (item in homepage.user.listPemasukkan) {
+//            val data = ItemHistory(
+//                item.nama,
+//                item.nominal,
+//                item.kategori,
+//                item.sumberDana,
+//                item.tanggal,
+//                "Pemasukkan"
+//            )
+//            arItemHistory.add(data)
+//        }
+
+        for (i in 0 until homepage.user.listPemasukkan.size) {
             val data = ItemHistory(
-                item.nama,
-                item.nominal,
-                item.kategori,
-                item.sumberDana,
-                item.tanggal,
+                i,
+                homepage.user.listPemasukkan[i].nama,
+                homepage.user.listPemasukkan[i].nominal,
+                homepage.user.listPemasukkan[i].kategori,
+                homepage.user.listPemasukkan[i].sumberDana,
+                homepage.user.listPemasukkan[i].tanggal,
+                homepage.user.listPemasukkan[i].deskripsi,
                 "Pemasukkan"
             )
             arItemHistory.add(data)
@@ -73,6 +102,16 @@ class History : AppCompatActivity() {
 
         val adapterHistory = AdapterHistory(arItemHistory)
         rvHistory.adapter = adapterHistory
+
+        // intent ke detail history
+        adapterHistory.setOnItemClickCallback(object : AdapterHistory.OnItemClickCallback{
+            override fun onItemClicked(data: ItemHistory) {
+                // Toast.makeText(this@History, data.nama, Toast.LENGTH_LONG).show()
+
+                DetailHistory.item = data  // set companion object
+                startActivity(Intent(this@History, DetailHistory::class.java))
+            }
+        })
     }
 
     // function untuk sorting history secara ascending
