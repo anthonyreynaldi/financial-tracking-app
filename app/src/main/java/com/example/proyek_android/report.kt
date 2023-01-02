@@ -58,7 +58,7 @@ class report : AppCompatActivity() {
         sdf = SimpleDateFormat("M")
         val curMonth = sdf.format(Date()).toString().toInt()
         sdf = SimpleDateFormat("yyyy")
-        var curYear = sdf.format(Date()).toString().toInt() - 1
+        var curYear = sdf.format(Date()).toString().toInt()
 
         var years = ArrayList<Int>()
         println("minYrPeng"+minYrPengeluaran)
@@ -126,33 +126,33 @@ class report : AppCompatActivity() {
             }
         }
         val pemasukkan2 = ArrayList<Entry>()
-        pemasukkan2.add(Entry(0F, arPemasukkan[0].toFloat()/1000000))
-        pemasukkan2.add(Entry(1F, arPemasukkan[1].toFloat()/1000000))
-        pemasukkan2.add(Entry(2F, arPemasukkan[2].toFloat()/1000000))
-        pemasukkan2.add(Entry(3F, arPemasukkan[3].toFloat()/1000000))
-        pemasukkan2.add(Entry(4F, arPemasukkan[4].toFloat()/1000000))
-        pemasukkan2.add(Entry(5F, arPemasukkan[5].toFloat()/1000000))
-        pemasukkan2.add(Entry(6F, arPemasukkan[6].toFloat()/1000000))
-        pemasukkan2.add(Entry(7F, arPemasukkan[7].toFloat()/1000000))
-        pemasukkan2.add(Entry(8F, arPemasukkan[8].toFloat()/1000000))
-        pemasukkan2.add(Entry(9F, arPemasukkan[9].toFloat()/1000000))
-        pemasukkan2.add(Entry(10F, arPemasukkan[10].toFloat()/1000000))
-        pemasukkan2.add(Entry(11F, arPemasukkan[11].toFloat()/1000000))
+        pemasukkan2.add(Entry(0F, arPemasukkan[0].toFloat()/1000))
+        pemasukkan2.add(Entry(1F, arPemasukkan[1].toFloat()/1000))
+        pemasukkan2.add(Entry(2F, arPemasukkan[2].toFloat()/1000))
+        pemasukkan2.add(Entry(3F, arPemasukkan[3].toFloat()/1000))
+        pemasukkan2.add(Entry(4F, arPemasukkan[4].toFloat()/1000))
+        pemasukkan2.add(Entry(5F, arPemasukkan[5].toFloat()/1000))
+        pemasukkan2.add(Entry(6F, arPemasukkan[6].toFloat()/1000))
+        pemasukkan2.add(Entry(7F, arPemasukkan[7].toFloat()/1000))
+        pemasukkan2.add(Entry(8F, arPemasukkan[8].toFloat()/1000))
+        pemasukkan2.add(Entry(9F, arPemasukkan[9].toFloat()/1000))
+        pemasukkan2.add(Entry(10F, arPemasukkan[10].toFloat()/1000))
+        pemasukkan2.add(Entry(11F, arPemasukkan[11].toFloat()/1000))
 
 
         val pengeluaran2 = ArrayList<Entry>()
-        pengeluaran2.add(Entry(0F, arPengeluaran[0].toFloat()/1000000))
-        pengeluaran2.add(Entry(1F, arPengeluaran[1].toFloat()/1000000))
-        pengeluaran2.add(Entry(2F, arPengeluaran[2].toFloat()/1000000))
-        pengeluaran2.add(Entry(3F, arPengeluaran[3].toFloat()/1000000))
-        pengeluaran2.add(Entry(4F, arPengeluaran[4].toFloat()/1000000))
-        pengeluaran2.add(Entry(5F, arPengeluaran[5].toFloat()/1000000))
-        pengeluaran2.add(Entry(6F, arPengeluaran[6].toFloat()/1000000))
-        pengeluaran2.add(Entry(7F, arPengeluaran[7].toFloat()/1000000))
-        pengeluaran2.add(Entry(8F, arPengeluaran[8].toFloat()/1000000))
-        pengeluaran2.add(Entry(9F, arPengeluaran[9].toFloat()/1000000))
-        pengeluaran2.add(Entry(10F, arPengeluaran[10].toFloat()/1000000))
-        pengeluaran2.add(Entry(11F, arPengeluaran[11].toFloat()/1000000))
+        pengeluaran2.add(Entry(0F, arPengeluaran[0].toFloat()/1000))
+        pengeluaran2.add(Entry(1F, arPengeluaran[1].toFloat()/1000))
+        pengeluaran2.add(Entry(2F, arPengeluaran[2].toFloat()/1000))
+        pengeluaran2.add(Entry(3F, arPengeluaran[3].toFloat()/1000))
+        pengeluaran2.add(Entry(4F, arPengeluaran[4].toFloat()/1000))
+        pengeluaran2.add(Entry(5F, arPengeluaran[5].toFloat()/1000))
+        pengeluaran2.add(Entry(6F, arPengeluaran[6].toFloat()/1000))
+        pengeluaran2.add(Entry(7F, arPengeluaran[7].toFloat()/1000))
+        pengeluaran2.add(Entry(8F, arPengeluaran[8].toFloat()/1000))
+        pengeluaran2.add(Entry(9F, arPengeluaran[9].toFloat()/1000))
+        pengeluaran2.add(Entry(10F, arPengeluaran[10].toFloat()/1000))
+        pengeluaran2.add(Entry(11F, arPengeluaran[11].toFloat()/1000))
 
 
         val pemasukkanLineDataSet = LineDataSet(pemasukkan2, "Pemasukkan")
@@ -184,7 +184,7 @@ class report : AppCompatActivity() {
         yAxisRight2.isEnabled = false
 
         lineChart.getAxisLeft().setValueFormatter(IAxisValueFormatter { value, axis ->
-            "" + value.toInt() + "jt" // yVal is a string array
+            "" + value.toInt() + " k" // yVal is a string array
         })
 
         val xLabel: ArrayList<String> = ArrayList()
