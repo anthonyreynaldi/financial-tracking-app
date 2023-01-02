@@ -48,11 +48,20 @@ class homepage : AppCompatActivity() {
             //kalo sp nya ada baru di load dari fb
             val db = FirebaseFirestore.getInstance()
 
-            db.collection(homepage.collectionName).document(homepage.documentName).get().addOnCompleteListener {
-                if (it.isSuccessful){
-                    user = it.result.toObject(user::class.java)!!
+            db.collection(homepage.collectionName).document(homepage.documentName).addSnapshotListener { value, error ->
+                if (error != null){
+                    Log.d("TAG FB", "onCreate: Error snapshot")
+                }
+
+                if (value != null && value.exists()){
+                    db.collection(homepage.collectionName).document(homepage.documentName).get().addOnCompleteListener {
+                        if (it.isSuccessful){
+                            user = it.result.toObject(user::class.java)!!
+                        }
+                    }
                 }
             }
+
         }
 
         btn_logout.setVisibility(View.GONE)
