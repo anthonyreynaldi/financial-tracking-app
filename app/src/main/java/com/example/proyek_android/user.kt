@@ -26,6 +26,20 @@ class user(
     var kategoriPengeluaran : ArrayList<KategoriPengeluaran> = ArrayList(),
     var kategoriPemasukkan : ArrayList<KategoriPemasukkan> = ArrayList(),
 ) {
+    init {
+        this.SumberDana.add(SumberDana("TABUNGAN", 0))
+
+        this.kategoriPengeluaran.add(KategoriPengeluaran("Makan", "🍽️"))
+        this.kategoriPengeluaran.add(KategoriPengeluaran("Rumah Tangga", "🛒"))
+        this.kategoriPengeluaran.add(KategoriPengeluaran("Pendidikan", "📖"))
+        this.kategoriPengeluaran.add(KategoriPengeluaran("Donasi", "🙏"))
+        this.kategoriPengeluaran.add(KategoriPengeluaran("Cicilan", "💰"))
+        this.kategoriPengeluaran.add(KategoriPengeluaran("Lain-lain", "😱"))
+
+        this.kategoriPemasukkan.add(KategoriPemasukkan("Gaji", "💸"))
+        this.kategoriPemasukkan.add(KategoriPemasukkan("Toko Online", "🏪"))
+        this.kategoriPemasukkan.add(KategoriPemasukkan("Lain-lain", "😱"))
+    }
      fun save(): Boolean {
          var success = false
          val db = FirebaseFirestore.getInstance()
