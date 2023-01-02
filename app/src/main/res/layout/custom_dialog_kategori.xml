@@ -8,7 +8,7 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/tv_judul_dialog_kategori"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tambah Kategori"
@@ -26,7 +26,7 @@
         app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_judul_dialog_kategori" />
 
     <LinearLayout
         android:id="@+id/linearLayout4"
@@ -66,7 +66,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17">
+        app:layout_constraintTop_toBottomOf="@+id/tv_judul_dialog_kategori">
 
         <RadioButton
             android:id="@+id/rd_pengeluaran"

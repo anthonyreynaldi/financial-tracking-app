@@ -8,9 +8,14 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.proyek_android.Classes.ItemHistory
 import com.example.proyek_android.Classes.RupiahFormater
 import com.example.proyek_android.R
+import com.example.proyek_android.homepage
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 
 class AdapterHistory (
     private val listHistory: ArrayList<ItemHistory>
@@ -36,6 +41,8 @@ class AdapterHistory (
         var tagKategori : LinearLayout = itemView.findViewById(R.id.tagKategori)
 
         var iconItem : ImageView = itemView.findViewById(R.id.iconHistory)
+
+        var icon_sumber_dana_history : de.hdodenhof.circleimageview.CircleImageView = itemView.findViewById(R.id.icon_sumber_dana_history)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -71,6 +78,21 @@ class AdapterHistory (
             holder.iconItem.setImageResource(imageRes)
 
             holder.tv_nominalItem.setTextColor(Color.parseColor("#255E31"))
+        }
+
+        //image
+        //search path sumber dana
+        for (sumberDana in homepage.user.SumberDana){
+            if (sumberDana.nama == itemHistory.sumberDana){
+
+                var storageRef: StorageReference = Firebase.storage.getReference()
+                sumberDana.icon?.let {
+                    storageRef.child(sumberDana.icon!!).downloadUrl.addOnSuccessListener {
+                        Glide.with(holder.itemView).load(it).into(holder.icon_sumber_dana_history)
+                    }
+                }
+                break
+            }
         }
     }
 

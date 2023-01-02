@@ -55,6 +55,10 @@ class KategoriPengeluaranFragment : Fragment() {
             val et_emoji_helper = kategori_dialog.findViewById<EditText>(R.id.et_emoji_helper)
             val et_nama_kategori = kategori_dialog.findViewById<EditText>(R.id.et_nama_kategori)
             val btn_tambah_kategori = kategori_dialog.findViewById<Button>(R.id.btn_tambah_kategori)
+            val tv_judul_dialog_kategori = kategori_dialog.findViewById<TextView>(R.id.tv_judul_dialog_kategori)
+
+            tv_judul_dialog_kategori.setText("Edit Kategori")
+            et_nama_kategori.requestFocus()
 
             //set emoji popup keyboard
             EmojiManager.install(GoogleEmojiProvider())

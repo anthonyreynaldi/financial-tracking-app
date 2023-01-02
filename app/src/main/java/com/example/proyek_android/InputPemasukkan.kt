@@ -101,7 +101,7 @@ class InputPemasukkan : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
                 val pemasukkan = Pemasukkan(_etNama.text.toString(), nominalInt,
                     selectedKategori, selectedSumberDana, _etTanggal.text.toString(), _etDeskrispi.text.toString())
 
-                if (homepage.user.SumberDana.get(selectedIndexSumberDana).nama == "Tabungan") {
+                if (homepage.user.SumberDana.get(selectedIndexSumberDana).nama == "TABUNGAN") {
                     val nominalTabungan = homepage.user.SumberDana.get(selectedIndexSumberDana).jumlah + pemasukkan.nominal
 
                     // show dialog kalau sudah mencapai target menabung
