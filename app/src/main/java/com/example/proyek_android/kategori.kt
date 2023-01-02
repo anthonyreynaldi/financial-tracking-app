@@ -71,6 +71,7 @@ class kategori : AppCompatActivity() {
 
         //set tambah kategori action
         btn_tambah_kategori.setOnClickListener {
+            var kembar = true
             val icon = tv_emoji.text.toString()
             val nama_kategori = et_nama_kategori.text.toString()
 
@@ -88,12 +89,26 @@ class kategori : AppCompatActivity() {
 
             if (radio_grup.checkedRadioButtonId == -1){
                 rd_pemasukan.setError("Pilih item")
+            }else{
+                kembar = user.isExsistKategori(jenis, nama_kategori)
+
+                if (kembar){
+                    et_nama_kategori.setError("Nama kategori harus unique")
+                }
+
             }
 
-            // add kategori to user
-            if (nama_kategori.isNotBlank() && radio_grup.checkedRadioButtonId != -1){
-                //tambah kategori ke user
 
+            // add kategori to user
+            if (nama_kategori.isNotBlank() && radio_grup.checkedRadioButtonId != -1 && !kembar){
+                //tambah kategori ke user
+                user.addKategori(jenis, nama_kategori, icon)
+
+                //refresh fragment
+                val fragmentList = arrayListOf<Fragment>(KategoriPengeluaranFragment(), KategoriPendapatanFragment())
+                val adapterPage = AdapterPage(fragmentList, supportFragmentManager, lifecycle)
+                viewpager_kategori.adapter = adapterPage
+                adapterPage.notifyDataSetChanged()
 
                 //reset dialog
                 radio_grup.clearCheck()
@@ -114,12 +129,12 @@ class kategori : AppCompatActivity() {
             kategori_dialog.show()
         }
 
+
         //btn back
         val btn_back = findViewById<ImageView>(R.id.btn_back6)
         btn_back.setOnClickListener{
-            startActivity(Intent(this, homepage::class.java))
+            finish()
         }
-
 
     }
 }

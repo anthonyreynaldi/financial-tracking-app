@@ -101,7 +101,7 @@ class InputPemasukkan : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
                 val pemasukkan = Pemasukkan(_etNama.text.toString(), nominalInt,
                     selectedKategori, selectedSumberDana, _etTanggal.text.toString(), _etDeskrispi.text.toString())
 
-                if (homepage.user.SumberDana.get(selectedIndexSumberDana).nama == "Tabungan") {
+                if (homepage.user.SumberDana.get(selectedIndexSumberDana).nama == "TABUNGAN") {
                     val nominalTabungan = homepage.user.SumberDana.get(selectedIndexSumberDana).jumlah + pemasukkan.nominal
 
                     // show dialog kalau sudah mencapai target menabung
@@ -119,7 +119,7 @@ class InputPemasukkan : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         //btn back
         val btn_back = findViewById<ImageView>(R.id.btn_back2)
         btn_back.setOnClickListener{
-            startActivity(Intent(this, homepage::class.java))
+            finish()
         }
     }
 
@@ -142,7 +142,7 @@ class InputPemasukkan : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
     // function untuk get list kategori yang dimiliki user
     fun siapkanListKategori() {
         for (kategori in homepage.user.kategoriPemasukkan) {
-            itemKategori.add(kategori.nama)
+            itemKategori.add(kategori.icon + " " + kategori.nama)
         }
 
         // select kategori

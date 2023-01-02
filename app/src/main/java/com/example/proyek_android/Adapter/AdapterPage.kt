@@ -23,4 +23,7 @@ class AdapterPage(list : ArrayList<Fragment>, fm : FragmentManager, lifecycle : 
         return fragmentList[position]
     }
 
+    fun test(){
+        this.notifyItemChanged(0)
+    }
 }

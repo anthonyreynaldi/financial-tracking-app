@@ -26,6 +26,20 @@ class user(
     var kategoriPengeluaran : ArrayList<KategoriPengeluaran> = ArrayList(),
     var kategoriPemasukkan : ArrayList<KategoriPemasukkan> = ArrayList(),
 ) {
+    init {
+        this.SumberDana.add(SumberDana("TABUNGAN", 0))
+
+        this.kategoriPengeluaran.add(KategoriPengeluaran("Makan", "🍽️"))
+        this.kategoriPengeluaran.add(KategoriPengeluaran("Rumah Tangga", "🛒"))
+        this.kategoriPengeluaran.add(KategoriPengeluaran("Pendidikan", "📖"))
+        this.kategoriPengeluaran.add(KategoriPengeluaran("Donasi", "🙏"))
+        this.kategoriPengeluaran.add(KategoriPengeluaran("Cicilan", "💰"))
+        this.kategoriPengeluaran.add(KategoriPengeluaran("Lain-lain", "😱"))
+
+        this.kategoriPemasukkan.add(KategoriPemasukkan("Gaji", "💸"))
+        this.kategoriPemasukkan.add(KategoriPemasukkan("Toko Online", "🏪"))
+        this.kategoriPemasukkan.add(KategoriPemasukkan("Lain-lain", "😱"))
+    }
      fun save(): Boolean {
          var success = false
          val db = FirebaseFirestore.getInstance()
@@ -80,16 +94,26 @@ class user(
             return Pair(false, "$nama sudah ada di daftar sumber dana Anda")
         }
 
-
         val namaOld = sumberDana.nama
+
+        //update nama di semua transaksi
+        //update pengeluaran
+        for (transaksi in listPengeluaran){
+            if (transaksi.sumberDana == namaOld){
+                transaksi.sumberDana = nama
+            }
+        }
+        //update pemasukan
+        for (transaksi in listPemasukkan){
+            if (transaksi.sumberDana == namaOld){
+                transaksi.sumberDana = nama
+            }
+        }
 
         //update nama nominal
         sumberDana.nama = nama
         sumberDana.jumlah = nominal
         sumberDana.icon = iconPath
-
-        //update nama di semua transaksi
-
 
         this.save()
         return Pair(true, "Berhasil merubah sumber dana")
@@ -118,6 +142,71 @@ class user(
     @JvmName("setTargetTabungan1")
     fun setTargetTabungan(jumlah: Int){
         this.targetTabungan = jumlah
+        this.save()
+    }
+
+    fun isExsistKategori(jenis: String, nama: String): Boolean {
+        var listCari = kategoriPengeluaran
+
+        if (jenis == "pemasukan") {
+            listCari = kategoriPengeluaran
+        }
+
+        for (kategori in listCari){
+            if (kategori.nama.lowercase() == nama.lowercase()){
+                return true
+            }
+        }
+
+        return false
+    }
+
+    fun addKategori(jenis : String, nama: String, icon : String){
+
+        if (jenis == "pengeluaran"){
+            val kategori = KategoriPengeluaran(nama, icon)
+            this.kategoriPengeluaran.add(kategori)
+        }else if (jenis == "pemasukan"){
+            val kategori = KategoriPemasukkan(nama, icon)
+            this.kategoriPemasukkan.add(kategori)
+        }
+
+        this.save()
+    }
+
+    fun editKategoriPengeluaran(index: Int, nama: String, icon: String){
+        val kategori = this.kategoriPengeluaran[index]
+
+        val namaOld = kategori.nama
+
+        //update pengeluaran
+        for (transaksi in listPengeluaran){
+            if (transaksi.sumberDana == namaOld){
+                transaksi.sumberDana = nama
+            }
+        }
+
+        kategori.nama = nama
+        kategori.icon = icon
+
+        this.save()
+    }
+
+    fun editKategoriPemasukan(index: Int, nama: String, icon: String){
+        val kategori = this.kategoriPemasukkan[index]
+
+        val namaOld = kategori.nama
+
+        //update pemasukan
+        for (transaksi in listPemasukkan){
+            if (transaksi.sumberDana == namaOld){
+                transaksi.sumberDana = nama
+            }
+        }
+
+        kategori.nama = nama
+        kategori.icon = icon
+
         this.save()
     }
 }
