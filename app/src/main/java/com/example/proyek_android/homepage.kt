@@ -87,7 +87,7 @@ class homepage : AppCompatActivity() {
         }
 
         btn_report.setOnClickListener{
-            startActivity(Intent(this, graph_coba::class.java))
+            startActivity(Intent(this, report::class.java))
         }
 
         btn_history.setOnClickListener {

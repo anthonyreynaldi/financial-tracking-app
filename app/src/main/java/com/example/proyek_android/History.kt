@@ -1,9 +1,11 @@
 package com.example.proyek_android
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +30,11 @@ class History : AppCompatActivity() {
 
         TambahData()
         TampilkanData()
+
+        val btn_back = findViewById<ImageView>(R.id.btn_back7)
+        btn_back.setOnClickListener{
+            startActivity(Intent(this, homepage::class.java))
+        }
     }
 
     private fun TambahData() {
