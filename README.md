@@ -24,6 +24,12 @@ Welcome to the Financial Tracker App - your personal finance management solution
 ### History Management
 - **Transaction History**: View and edit the history of income and expenses for better financial insights.
 
+## Authors
+
+- [@anthonyreynaldi](https://github.com/anthonyreynaldi)
+- [@wendysan98](https://github.com/wendysan98)
+- [@kellyflorences](https://github.com/kellyflorences)
+
 ## Screenshots
 
 ### Login and Register Page
