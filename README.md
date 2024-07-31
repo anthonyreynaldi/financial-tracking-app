@@ -1,5 +1,5 @@
-# Financial Tracker App
-Welcome to the Financial Tracker App - your personal finance management solution! Built with Kotlin and Firebase, this Android application enables users to efficiently track income, expenses, and savings.
+# Financial Tracking App
+Welcome to the Financial Tracking App - your personal finance management solution! Built with Kotlin and Firebase, this Android application enables users to efficiently track income, expenses, and savings.
 
 # Key Features
 
